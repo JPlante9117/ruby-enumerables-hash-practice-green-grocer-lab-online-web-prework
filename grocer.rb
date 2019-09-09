@@ -15,7 +15,7 @@ end
 def apply_coupons(cart, coupons)
   coupons.each do |coupon|
     item = coupon[:item]                      #selects the item that the coupon applies to via the hash given
-    appliedcoupon = "#{item} W/COUPON"
+    appliedcoupon = "#{:item} W/COUPON"
     if cart[item]                             #If the cart has the item . . .
       if cart[item][:count] >= coupon[:num] && !cart.has_key?(appliedcoupon)
                                               
