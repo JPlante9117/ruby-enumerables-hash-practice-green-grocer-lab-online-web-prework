@@ -13,6 +13,12 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
+  coupons.each do |coupon|
+    item = coupon[:item]                      #selects the item that the coupon applies to via the hash given
+    
+    
+    
+  end
   consolidate_cart(cart).each do ||
     
   end
