@@ -17,10 +17,9 @@ def apply_coupons(cart, coupons)
     item = coupon[:item]                      #selects the item that the coupon applies to via the hash given
     
     if cart[item] && coupon[:item][:count] >= coupon[:num] && cart["#{item} W/COUPON"]          #
-      
     
-  end
-  consolidate_cart(cart).each do ||
+    
+    end
     
   end
 end
