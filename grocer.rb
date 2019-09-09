@@ -19,7 +19,7 @@ def apply_coupons(cart, coupons)
     if cart[item]                             #If the cart has the item . . .
       if cart[item][:count] >= coupon[:num] && !cart.has_key?("#{item} W/COUPON")
                                               
-                                              # . . . and if the count >= the number of coupons for that same item, and there not a cart[item w/ coupon] in existence . . . 
+                                              # . . . and if the count >= the number of coupons for that same item, and there not a cart["#{item} W/COUPON"] in existence . . . 
                                               
         cart["#{item} W/COUPON"] = {price: coupon[:cost] / coupon[:num], clearance: cart[item][:clearance], count: coupon[:num]}
         cart[item][:count] -= coupon[:num]                                        
@@ -31,7 +31,7 @@ def apply_coupons(cart, coupons)
                                               
         cart["#{item} W/COUPON"][:count] += coupon[:num]
         cart[item][:count] -= coupon[:num]
-                                              #then just update the count of the cart[appliedcoupon] and the count for the regular cart.
+                                              #then just update the count of the cart["#{item} W/COUPON"] and the count for the regular cart.
       end
     end
     
