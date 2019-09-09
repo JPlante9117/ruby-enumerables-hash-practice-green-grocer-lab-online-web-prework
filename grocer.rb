@@ -1,9 +1,20 @@
-def consolidate_cart(cart)
-  # code here
+def consolidate_cart(cart) 
+  new_cart = {}                               #creating a new hash
+  cart.each do |item|                         #iterating through each item in cart to check inside a nested hash
+    item_name = item.keys[0]                  #giving variable item_name the value of item.keys (which will return the specific item)
+    if new_cart[item_name]                    #if statement declaring that if there is an item already present, then increase the count
+      new_cart[item_name][:count] += 1 
+    else                                      #otherwise, create an instance of that item and then set it's count to 1
+      new_cart[item_name] = item[item_name]
+      new_cart[item_name][:count] = 1
+    end
+  end
+  new_cart                                    #and finally ask to return the new hash
 end
 
 def apply_coupons(cart, coupons)
-  # code here
+  cart.each do |item|
+    item_name = item.keys[0]
 end
 
 def apply_clearance(cart)
