@@ -16,8 +16,13 @@ def apply_coupons(cart, coupons)
   coupons.each do |coupon|
     item = coupon[:item]                      #selects the item that the coupon applies to via the hash given
     
-    if cart[item] && coupon[:item][:count] >= coupon[:num] && cart["#{item} W/COUPON"]          #
-      cart["#{item} W/COUPON"] = {price: coupon[:cost] / coupon[:num], clearance: cart[item][:clearance], count: coupon[:num]}  #
+    if cart[item] && coupon[:item][:count] >= coupon[:num] && cart["#{item} W/COUPON"]
+                                              
+                                              #If your cart has an item and the coupon has the same item and it's count is >= the number of coupons, and there is already a cart[item w/ coupon] in existence . . . 
+                                              
+      cart["#{item} W/COUPON"] = {price: coupon[:cost] / coupon[:num], clearance: cart[item][:clearance], count: coupon[:num]}
+                                              
+                                              #then 
     
     end
     
