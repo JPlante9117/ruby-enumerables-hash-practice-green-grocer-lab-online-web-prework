@@ -17,7 +17,7 @@ def apply_coupons(cart, coupons)
     item = coupon[:item]                      #selects the item that the coupon applies to via the hash given
     appliedcoupon = "#{item} W/COUPON"
     if cart[item]                             #If the cart has the item . . .
-      if cart[item][:count] >= coupon[:num] && !cart[appliedcoupon]
+      if cart[item][:count] >= coupon[:num] && !cart.has_key?(appliedcoupon)
                                               
                                               # . . . and if the count >= the number of coupons for that same item, and there not a cart[item w/ coupon] in existence . . . 
                                               
@@ -25,7 +25,7 @@ def apply_coupons(cart, coupons)
       cart[item][:count] -= coupon[:num]                                        
                                               #then create the discounted item and it's hash. coupon[:num] gives you the count for the coupons. Therefore, you can decrease the non-discounted items by the number of coupons and create a coupon set that IS discounted
                                               
-      elsif cart[item] && cart[item][:count] >= coupon[:num] && cart[appliedcoupon]
+      elsif cart[item] && cart[item][:count] >= coupon[:num] && cart.has_key?(appliedcoupon)
       
                                               #Otherwise, if there IS a cart[item w/ coupon] in existence . . .
                                               
