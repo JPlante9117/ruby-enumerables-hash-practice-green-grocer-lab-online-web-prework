@@ -16,14 +16,15 @@ def apply_coupons(cart, coupons)
   coupons.each do |coupon|
     item = coupon[:item]                      #selects the item that the coupon applies to via the hash given
     
-    if cart[item] && coupon[:item][:count] >= coupon[:num] && cart["#{item} W/COUPON"]
+    if cart[item] && coupon[:item][:count] >= coupon[:num] && !cart["#{item} W/COUPON"]
                                               
-                                              #If your cart has an item and the coupon has the same item and it's count is >= the number of coupons, and there is already a cart[item w/ coupon] in existence . . . 
+                                              #If your cart has an item and the coupon has the same item and it's count is >= the number of coupons, and there not a cart[item w/ coupon] in existence . . . 
                                               
       cart["#{item} W/COUPON"] = {price: coupon[:cost] / coupon[:num], clearance: cart[item][:clearance], count: coupon[:num]}
       cart[item][:count] -= coupon[:num]                                        
                                               #then create the discounted item and it's hash. coupon[:num] gives you the count for the coupons. Therefore, you can decrease the non-discounted items by the number of coupons and create a coupon set that IS discounted
-      elsif
+      elsif cart[item] && coupon[:item][:count] >= coupon[:num] && cart["#{item} W/COUPON"]
+                                              #Otherwise, if there IS a cart[item w/ coupon] in existence . . .
       
     end
     
