@@ -21,8 +21,9 @@ def apply_coupons(cart, coupons)
                                               #If your cart has an item and the coupon has the same item and it's count is >= the number of coupons, and there is already a cart[item w/ coupon] in existence . . . 
                                               
       cart["#{item} W/COUPON"] = {price: coupon[:cost] / coupon[:num], clearance: cart[item][:clearance], count: coupon[:num]}
-                                              
+      cart[item][:count] -= coupon[:num]                                        
                                               #then 
+      elsif
     
     end
     
